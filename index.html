@@ -3,30 +3,30 @@
 <meta charset="UTF-8">
 <title>Royalty & Seigniorage Calculator</title>
 <style>
-body {font-family: Arial; padding: 20px; background: #f5f5f5; margin:0;}
+body {font-family: Arial; padding: 20px; background: #f5f5f5; margin:0; font-size:24px;}
 table {border-collapse: collapse; width: 100%; margin-bottom: 25px; background: #fff; font-size:18px;}
-th, td {border: 1px solid #ccc; padding: 15px; text-align: center;}
+th, td {border: 1px solid #ccc; padding: 22px; text-align: center; font-size:24px;}
 th {background: #eee;}
-input {width: 120px; padding: 8px; font-size:16px;}
-.result {font-weight: bold; font-size: 22px; margin:10px 0;}
+input {width: 150px; padding: 12px; font-size:22px;}
+.result {font-weight: bold; font-size: 28px; margin:15px 0;}
 .box {background:#fff; padding:20px; margin-bottom:25px; border:1px solid #ccc; font-size:18px;}
 button {
     width: 100%;
-    padding: 18px;
-    font-size: 20px;
+    padding: 22px;
+    font-size: 24px;
     font-weight: bold;
     background: #007bff;
     color: white;
     border: none;
-    border-radius: 8px;
+    border-radius: 10px;
     cursor: pointer;
 }
 button:hover {
     background: #0056b3;
 }</style>
 </head>
-<body><h2>Previous Adjustment</h2>
-<!-- Previous inputs moved to top --><h2>Seigniorage Fee</h2>
+<body><h2 style="font-size:28px;">Previous Adjustment</h2 style="font-size:28px;">
+<!-- Previous inputs moved to top --><h2 style="font-size:28px;">Seigniorage Fee</h2 style="font-size:28px;">
 <table>
 <tr><th>Item</th><th>Quantity</th><th>Rate</th><th>Amount</th></tr>
 <tr><td>C.S</td><td><input type="number" id="cs_q" value="260.24"></td><td>32.58</td><td id="cs_amt">0</td></tr>
@@ -35,7 +35,7 @@ button:hover {
 <tr><td>Brick</td><td><input type="number" id="brick_q" value="14.172"></td><td>537</td><td id="brick_amt">0</td></tr>
 <tr><td>E.W</td><td><input type="number" id="ew_q" value="468.01"></td><td>3.3</td><td id="ew_amt">0</td></tr>
 </table>
-<p class="result">Net Seigniorage (After Deduction): <span id="total_seigniorage">0</span></p><h2>Royalty</h2>
+<p class="result">Net Seigniorage (After Deduction): <span id="total_seigniorage">0</span></p><h2 style="font-size:28px;">Royalty</h2 style="font-size:28px;">
 <table>
 <tr><th>Item</th><th>Quantity</th><th>Rate</th><th>Amount</th></tr>
 <tr><td>E.W</td><td><input type="number" id="rew_q" value="468.01"></td><td>33</td><td id="rew_amt">0</td></tr>
@@ -43,7 +43,7 @@ button:hover {
 <tr><td>L.S</td><td><input type="number" id="rls_q" value="900.94"></td><td>75</td><td id="rls_amt">0</td></tr>
 </table>
 <p class="result">Net Royalty (After Deduction): <span id="total_royalty">0</span></p><div class="box">
-<h3>Previous Values (Deducted in Total)</h3>
+<h3 style="font-size:24px;">Previous Values (Deducted in Total)</h3 style="font-size:24px;">
 <label>Previous Seigniorage: </label>
 <input type="number" id="prev_seig" value="0"><br><br>
 <label>Previous Royalty: </label>

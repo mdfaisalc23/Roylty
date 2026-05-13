@@ -1,0 +1,80 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Royalty & Seigniorage Calculator</title>
+<style>
+body {font-family: Arial; padding: 20px; background: #f5f5f5;}
+table {border-collapse: collapse; width: 60%; margin-bottom: 20px; background: #fff;}
+th, td {border: 1px solid #ccc; padding: 10px; text-align: center;}
+th {background: #eee;}
+input {width: 100px; padding: 5px;}
+.result {font-weight: bold; font-size: 18px;}
+.box {background:#fff; padding:15px; margin-bottom:20px; border:1px solid #ccc;}
+</style>
+</head>
+<body><h2>Previous Adjustment</h2>
+<!-- Previous inputs moved to top --><h2>Seigniorage Fee</h2>
+<table>
+<tr><th>Item</th><th>Quantity</th><th>Rate</th><th>Amount</th></tr>
+<tr><td>C.S</td><td><input type="number" id="cs_q" value="260.24"></td><td>32.58</td><td id="cs_amt">0</td></tr>
+<tr><td>S.C</td><td><input type="number" id="sc_q" value="347.96"></td><td>80.79</td><td id="sc_amt">0</td></tr>
+<tr><td>L.S</td><td><input type="number" id="ls_q" value="900.94"></td><td>21.69</td><td id="ls_amt">0</td></tr>
+<tr><td>Brick</td><td><input type="number" id="brick_q" value="14.172"></td><td>537</td><td id="brick_amt">0</td></tr>
+<tr><td>E.W</td><td><input type="number" id="ew_q" value="468.01"></td><td>3.3</td><td id="ew_amt">0</td></tr>
+</table>
+<p class="result">Net Seigniorage (After Deduction): <span id="total_seigniorage">0</span></p><h2>Royalty</h2>
+<table>
+<tr><th>Item</th><th>Quantity</th><th>Rate</th><th>Amount</th></tr>
+<tr><td>E.W</td><td><input type="number" id="rew_q" value="468.01"></td><td>33</td><td id="rew_amt">0</td></tr>
+<tr><td>Brick</td><td><input type="number" id="rbrick_q" value="14.172"></td><td>45</td><td id="rbrick_amt">0</td></tr>
+<tr><td>L.S</td><td><input type="number" id="rls_q" value="900.94"></td><td>75</td><td id="rls_amt">0</td></tr>
+</table>
+<p class="result">Net Royalty (After Deduction): <span id="total_royalty">0</span></p><div class="box">
+<h3>Previous Values (Deducted in Total)</h3>
+<label>Previous Seigniorage: </label>
+<input type="number" id="prev_seig" value="0"><br><br>
+<label>Previous Royalty: </label>
+<input type="number" id="prev_roy" value="0">
+</div><button onclick="calculate()">Calculate</button>
+
+<script>
+function calculate() {
+    let cs = cs_q.value * 32.58;
+    let sc = sc_q.value * 80.79;
+    let ls = ls_q.value * 21.69;
+    let brick = brick_q.value * 537;
+    let ew = ew_q.value * 3.3;
+
+    cs_amt.innerText = cs.toFixed(2);
+    sc_amt.innerText = sc.toFixed(2);
+    ls_amt.innerText = ls.toFixed(2);
+    brick_amt.innerText = brick.toFixed(2);
+    ew_amt.innerText = ew.toFixed(2);
+
+    let total_seigniorage = cs + sc + ls + brick + ew;
+    total_seigniorage_span = document.getElementById('total_seigniorage');
+    total_seigniorage_span.innerText = total_seigniorage.toFixed(2);
+
+    let rew = rew_q.value * 33;
+    let rbrick = rbrick_q.value * 45;
+    let rls = rls_q.value * 75;
+
+    rew_amt.innerText = rew.toFixed(2);
+    rbrick_amt.innerText = rbrick.toFixed(2);
+    rls_amt.innerText = rls.toFixed(2);
+
+    let total_royalty = rew + rbrick + rls;
+    document.getElementById('total_royalty').innerText = total_royalty.toFixed(2);
+
+    // Previous subtraction directly in total
+    let prevSeig = parseFloat(document.getElementById('prev_seig').value) || 0;
+    let prevRoy = parseFloat(document.getElementById('prev_roy').value) || 0;
+
+    total_seigniorage -= prevSeig;
+    total_royalty -= prevRoy;
+
+    document.getElementById('total_seigniorage').innerText = total_seigniorage.toFixed(2);
+    document.getElementById('total_royalty').innerText = total_royalty.toFixed(2);
+}
+</script></body>
+</html>
